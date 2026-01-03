@@ -1,2 +1,5 @@
 (library
- (name ninety_nine_ocaml_problems))
+ (name ninety_nine_ocaml_problems)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_test)))

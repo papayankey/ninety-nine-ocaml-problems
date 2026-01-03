@@ -5,19 +5,18 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github papayankey/ninety-nine-ocaml-problems))
 
-(authors "Author Name <author@example.com>")
+(authors "Benneth Yankey <yankeybenneth@gmail.com>")
 
-(maintainers "Maintainer Name <maintainer@example.com>")
+(maintainers "Benneth Yankey <yankeybenneth@gmail.com>")
 
 (license LICENSE)
 
-(documentation https://url/to/documentation)
-
 (package
  (name ninety-nine-ocaml-problems)
- (synopsis "A short synopsis")
+ (synopsis
+  "A ninety-nine ocaml exercises inspired by ninety-nine lisp problems")
  (description "A longer description")
  (depends ocaml)
  (tags

@@ -1,4 +1,4 @@
-(executable
- (public_name ninety-nine-ocaml-problems)
- (name main)
+(executables
+ (public_names one)
+ (names one)
  (libraries ninety_nine_ocaml_problems))

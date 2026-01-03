@@ -1,0 +1,4 @@
+(executable
+ (public_name ninety-nine-ocaml-problems)
+ (name main)
+ (libraries ninety_nine_ocaml_problems))

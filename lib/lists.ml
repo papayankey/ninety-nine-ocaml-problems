@@ -26,3 +26,46 @@ let rec at n = function
 
 let%test _ = at 2 [ "a"; "b"; "c"; "d"; "e" ] = Some "c"
 let%test _ = at 2 [ "a" ] = None
+
+(* 17 *)
+let split list n =
+  if n < 0 || n >= List.length list
+  then list, []
+  else (
+    let rec aux k acc = function
+      | [] -> [], []
+      | h :: t -> if k = 1 then List.rev (h :: acc), t else aux (k - 1) (h :: acc) t
+    in
+    aux n [] list)
+;;
+
+let%test _ =
+  split [ "a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"; "i"; "j" ] 3
+  = ([ "a"; "b"; "c" ], [ "d"; "e"; "f"; "g"; "h"; "i"; "j" ])
+;;
+
+let%test _ = split [ "a"; "b"; "c"; "d" ] 5 = ([ "a"; "b"; "c"; "d" ], [])
+
+(* 18 *)
+let slice list s e =
+  if s < 0 || e >= List.length list
+  then []
+  else (
+    let rec aux n acc = function
+      | [] -> []
+      | h :: t ->
+        if n < s
+        then aux (n + 1) acc t
+        else if n >= s && n <= e
+        then aux (n + 1) (h :: acc) t
+        else List.rev acc
+    in
+    aux 0 [] list)
+;;
+
+let%test _ =
+  slice [ "a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"; "i"; "j" ] 2 6
+  = [ "c"; "d"; "e"; "f"; "g" ]
+;;
+
+let%test _ = slice [ "a"; "b"; "c" ] 2 4 = []

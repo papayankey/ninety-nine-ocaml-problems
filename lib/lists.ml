@@ -27,6 +27,18 @@ let rec at n = function
 let%test _ = at 2 [ "a"; "b"; "c"; "d"; "e" ] = Some "c"
 let%test _ = at 2 [ "a" ] = None
 
+(* 04 *)
+let length list =
+  let rec loop count = function
+    | [] -> count
+    | _ :: t -> loop (count + 1) t
+  in
+  loop 0 list
+;;
+
+let%test _ = length [ "a"; "b"; "c" ] = 3
+let%test _ = length [] = 0
+
 (* 17 *)
 let split list n =
   if n < 0 || n >= List.length list

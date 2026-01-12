@@ -1,4 +1,4 @@
-(* 01 *)
+(* 01 - Tail of a List *)
 let rec last = function
   | [] -> None
   | [ x ] -> Some x
@@ -8,7 +8,7 @@ let rec last = function
 let%test _ = last [ "a"; "b"; "c"; "d" ] = Some "d"
 let%test _ = last [] = None
 
-(* 02 *)
+(* 02 - Last Two Elements of a List *)
 let rec last_two = function
   | [] -> None
   | [ a; b ] -> Some (a, b)
@@ -18,7 +18,7 @@ let rec last_two = function
 let%test _ = last_two [ "a"; "b"; "c"; "d" ] = Some ("c", "d")
 let%test _ = last_two [ "a" ] = None
 
-(* 03 *)
+(* 03 - N'th Element of a List *)
 let rec at n = function
   | [] -> None
   | h :: t -> if n = 0 then Some h else at (n - 1) t
@@ -27,7 +27,7 @@ let rec at n = function
 let%test _ = at 2 [ "a"; "b"; "c"; "d"; "e" ] = Some "c"
 let%test _ = at 2 [ "a" ] = None
 
-(* 04 *)
+(* 04 - Lenght of a List *)
 let length lst =
   let rec loop count = function
     | [] -> count
@@ -39,7 +39,7 @@ let length lst =
 let%test _ = length [ "a"; "b"; "c" ] = 3
 let%test _ = length [] = 0
 
-(* 05 *)
+(* 05 - Reverse a List *)
 let rev lst =
   let rec loop acc = function
     | [] -> acc
@@ -50,7 +50,7 @@ let rev lst =
 
 let%test _ = rev [ "a"; "b"; "c" ] = [ "c"; "b"; "a" ]
 
-(* 17 *)
+(* 17 - Split a List Into Two Parts; The Length of the First Part Is Given *)
 let split list n =
   if n < 0 || n >= List.length list
   then list, []
@@ -69,7 +69,7 @@ let%test _ =
 
 let%test _ = split [ "a"; "b"; "c"; "d" ] 5 = ([ "a"; "b"; "c"; "d" ], [])
 
-(* 18 *)
+(* 18 - Extract a Slice From a List *)
 let slice list s e =
   if s < 0 || e >= List.length list
   then []

@@ -92,3 +92,22 @@ let%test _ =
 ;;
 
 let%test _ = slice [ "a"; "b"; "c" ] 2 4 = []
+
+(* 19 - Rotate a List N Places to the Left *)
+let rotate lst n =
+  let rec loop lst k acc =
+    match k, lst with
+    | _, [] -> if List.is_empty acc then [] else List.rev acc
+    | 0, l -> l @ List.rev acc
+    | _, h :: t -> loop t (k - 1) (h :: acc)
+  in
+  loop lst n []
+;;
+
+let%test _ =
+  rotate [ "a"; "b"; "c"; "d"; "e"; "f"; "g"; "h" ] 3
+  = [ "d"; "e"; "f"; "g"; "h"; "a"; "b"; "c" ]
+;;
+
+let%test _ = rotate [] 1 = []
+let%test _ = rotate [ "a"; "b"; "c" ] 3 = [ "a"; "b"; "c" ]

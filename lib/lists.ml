@@ -28,16 +28,27 @@ let%test _ = at 2 [ "a"; "b"; "c"; "d"; "e" ] = Some "c"
 let%test _ = at 2 [ "a" ] = None
 
 (* 04 *)
-let length list =
+let length lst =
   let rec loop count = function
     | [] -> count
     | _ :: t -> loop (count + 1) t
   in
-  loop 0 list
+  loop 0 lst
 ;;
 
 let%test _ = length [ "a"; "b"; "c" ] = 3
 let%test _ = length [] = 0
+
+(* 05 *)
+let rev lst =
+  let rec loop acc = function
+    | [] -> acc
+    | h :: t -> loop (h :: acc) t
+  in
+  loop [] lst
+;;
+
+let%test _ = rev [ "a"; "b"; "c" ] = [ "c"; "b"; "a" ]
 
 (* 17 *)
 let split list n =

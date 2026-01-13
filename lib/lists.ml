@@ -111,3 +111,18 @@ let%test _ =
 
 let%test _ = rotate [] 1 = []
 let%test _ = rotate [ "a"; "b"; "c" ] 3 = [ "a"; "b"; "c" ]
+
+(* 20 - Remove the K'th Element From a List *)
+let remove_at n lst =
+  if n < 0 || n >= List.length lst
+  then []
+  else (
+    let rec loop acc k = function
+      | [] -> []
+      | h :: t -> if k = 0 then List.rev acc @ t else loop (h :: acc) (k - 1) t
+    in
+    loop [] n lst)
+;;
+
+let%test _ = remove_at 1 [ "a"; "b"; "c"; "d" ] = [ "a"; "c"; "d" ]
+let%test _ = remove_at 3 [ "a"; "b" ] = []

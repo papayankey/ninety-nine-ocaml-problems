@@ -126,3 +126,11 @@ let remove_at n lst =
 
 let%test _ = remove_at 1 [ "a"; "b"; "c"; "d" ] = [ "a"; "c"; "d" ]
 let%test _ = remove_at 3 [ "a"; "b" ] = []
+
+(* 21 - Create a List Containing All Integers With a Given Range *)
+let range f t =
+  let rec loop acc k = if k > t then acc else loop (k :: acc) (k + 1) in
+  List.rev (loop [] f)
+;;
+
+let%test _ = range 4 9 = [ 4; 5; 6; 7; 8; 9 ]

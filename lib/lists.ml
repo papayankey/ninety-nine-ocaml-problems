@@ -127,7 +127,22 @@ let remove_at n lst =
 let%test _ = remove_at 1 [ "a"; "b"; "c"; "d" ] = [ "a"; "c"; "d" ]
 let%test _ = remove_at 3 [ "a"; "b" ] = []
 
-(* 21 - Create a List Containing All Integers With a Given Range *)
+(* 21 - Insert an element at a given position into a list *)
+let insert_at elem pos lst =
+  let rec loop acc k lst =
+    match k, lst with
+    | 0, l -> List.rev acc @ (elem :: l)
+    | _, [] -> []
+    | _, h :: t -> loop (h :: acc) (k - 1) t
+  in
+  loop [] pos lst
+;;
+
+let%test _ = insert_at "alfa" 1 [ "a"; "b"; "c"; "d" ] = [ "a"; "alfa"; "b"; "c"; "d" ]
+let%test _ = insert_at "foo" 1 [] = []
+let%test _ = insert_at "baz" 1 [ "a" ] = [ "a"; "baz" ]
+
+(* 22 - Create a List Containing All Integers With a Given Range *)
 let range f t =
   let rec loop acc k = if k > t then acc else loop (k :: acc) (k + 1) in
   List.rev (loop [] f)
